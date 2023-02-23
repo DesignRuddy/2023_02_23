@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+<style> *{font-size: 12pt;} </style>
+<script>
+    function myclear(){
+        document.getElementById('res').value='';
+    }
+    function mycal(num){
+      var isopchecked=false;
+      var oper=false; //+연산,  -빼기,  if/switch
+      var su1=frm.num1.value; //값받기
+      var su2=frm.num2.value;
+            // mns=su1-su2;
+            // pls=su1+su2;
+            // mpt=su1*su2;
+            // dvs=su1/su2;
+        if(su1 == 0 && su2 == 0){
+        return alert('기입란에 아무것도 없습니다.\n연산처리와 숫자를 입력하세요');}
+
+        var mns = Number(su1) - Number(su2);
+            pls = Number(su1) + Number(su2);
+            mpt = Number(su1) * Number(su2);
+            dvs = Number(su1)/Number(su2);
+
+        var checkpls = document.getElementById('pls');
+        var checkmns = document.getElementById('mns');
+        var checkmpt = document.getElementById('mpt');
+        var checkdvs = document.getElementById('dvs');
+     
+        if(checkpls.checked){
+                document.getElementById('res').value=pls;
+        }   else if(checkmns.checked) {
+                document.getElementById('res').value=mns;
+        }   else if(checkmpt.checked) {
+                document.getElementById('res').value=mpt;
+        }   else  {
+                document.getElementById('res').value=dvs;
+        }
+        let resultHistory = document.getElementById('res');
+        
+            resultHistory.innerHTML = '';
+    }//end
+
+</script>
+</head>
+<body>
+    <h2>01testcal.html</h2>
+    <form name="frm">
+        숫자1 : <input type="text" name="num1" placeholder='****' value=""><br>
+        숫자2 : <input type="text" name="num2" placeholder='****' value=""><br>
+    
+        연산 :
+        <input type="radio" name="op" id="pls" value="1"><label for="add">+덧셈</label>
+        <input type="radio" name="op" id="mns" value="2"><label for="sub">-빼기</label>
+        <input type="radio" name="op" id="mpt" value="3"><label for="mul">*곱셈</label>
+        <input type="radio" name="op" id="dvs" value="4"><label for="div">/몫</label>
+        <br>
+        결과 : 
+         <input type="text" id="res" name="res" checked onchange="myclear();"><br>
+         <input type="button" value="사칙연산처리" onclick="mycal()">
+        <input type="button" value="reload" onclick="location.reload();">
+        <input type="button" value="윈도우닫기" onclick="self.close()">
+    </form>
+</body>
+</html>
